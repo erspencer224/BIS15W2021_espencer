@@ -6,3 +6,6 @@ I am very excited to learn how to code in R!
 * I am from Seattle, Washington
 * I love to dance, read, and be on the ocean
 * I am currently tutoring students living in Syria!
+
+Here is a photo of my dog, Luna!
+![Image of Luna]()
