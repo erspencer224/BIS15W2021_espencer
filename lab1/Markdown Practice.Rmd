@@ -1,0 +1,27 @@
+---
+title: "R Markdown Practice"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# This is my first Markdown file
+## This is my first Markdown file 
+### This is my first Markdown file
+
+[Emily Spencer](mailto:erspencer@ucdavis.edu)
+
+**yo wassup**
+*I'm in an R class*
+
+```{r message=FALSE, warning=FALSE}
+#install.packages("tidyverse")
+library("tidyverse")
+```
+
+```{r}
+ggplot(mtcars, aes(x = factor(cyl))) +
+    geom_bar()
+```
