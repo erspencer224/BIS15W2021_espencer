@@ -7,5 +7,6 @@ I am very excited to learn how to code in R, *which is what I will be using this
  **Fun Facts About Me:**
 * I am from Seattle, Washington☂
 * I love to dance, read, and be on the ocean💃📚🌊
+* I unfortunately need to drink coffee every morning☕ 
 * I am currently tutoring students who live in Syria!📝
 
