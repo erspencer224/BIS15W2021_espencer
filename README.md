@@ -1,6 +1,6 @@
 ![image](https://user-images.githubusercontent.com/76849576/105104049-6ace4880-5a66-11eb-8295-fa28f0f5bdd0.png)
-<img src="https://user-images.githubusercontent.com/76849576/105104049-6ace4880-5a66-11eb-8295-fa28f0f5bdd0.png" width="880">
-**Hi! I am [Emily](mailto:erspencer@ucdavis.edu)**, a third year Global Disease Biology student minoring in Global and International Studies with an emphasis on inequality. 
+
+**Hi! My name is [Emily](mailto:erspencer@ucdavis.edu)**, and I am a third year Global Disease Biology student minoring in Global and International Studies with an emphasis on inequality. 
 
 🌎🦠🤝
 
