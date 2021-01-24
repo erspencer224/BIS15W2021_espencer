@@ -29,21 +29,31 @@ For the homework, we will use data about vertebrate home range sizes. The data a
 Reference: Tamburello N, Cote IM, Dulvy NK (2015) Energy and the scaling of animal space use. The American Naturalist 186(2):196-211. http://dx.doi.org/10.1086/682070.  
 Data: http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1  
 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 **1. Load the data into a new object called `homerange`.**
 ```{r}
 homerange <- readr::read_csv("data/Tamburelloetal_HomeRangeDatabase.csv")
 ```
+</div>
+
+You did not have these data in your directory so your code would not run. I added them in order to get it to work. Remember, you need to include the data in order for other folks to test your code.  
 
 **2. Explore the data. Show the dimensions, column names, classes for each variable, and a statistical summary. Keep these as separate code chunks.**  
 ```{r}
 dim(homerange)
 ```
+
 ```{r}
 colnames(homerange)
 ```
+
 ```{r}
 glimpse(homerange)
 ```
+
 ```{r}
 summary(homerange)
 ```
@@ -60,14 +70,14 @@ levels(homerange$order)
 ```{r}
 names(homerange)
 ```
+
 ```{r}
 levels(homerange$taxon)
 ```
+
 ```{r}
 taxa <- select(homerange, taxon, common.name, class, order, family, genus, species)
-taxa
 ```
-
 
 **5. The variable `taxon` identifies the large, common name groups of the species represented in `homerange`. Make a table the shows the counts for each of these `taxon`.**  
 ```{r}
@@ -83,6 +93,7 @@ table(homerange$trophic.guild)
 ```{r}
 carnivores <- filter(homerange, trophic.guild=="carnivore")
 ```
+
 ```{r}
 herbivores <- filter(homerange, trophic.guild=="herbivore")
 ```
@@ -92,6 +103,7 @@ herbivores <- filter(homerange, trophic.guild=="herbivore")
 herbivoresmean <- herbivores$mean.hra.m2
 mean(herbivoresmean, na.rm=T)
 ```
+
 ```{r}
 carnivoresmean <- carnivores$mean.hra.m2
 mean(carnivoresmean, na.rn=T)
@@ -105,6 +117,7 @@ deer <- filter(homerange, family =="cervidae")
 deer_limited <- select(deer, mean.mass.g, log10.mass, family, genus, species)
 arrange(deer_limited, desc(log10.mass))
 ```
+
 ```{r}
 biggest_deer <- subset(deer, genus=="alces" & species=="alces")
 biggest_deer
