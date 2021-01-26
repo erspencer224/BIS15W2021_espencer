@@ -98,6 +98,10 @@ good_guys <-superhero_info %>%
   filter(alignment=="good")
 good_guys
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 6. For the good guys, use the `tabyl` function to summarize their "race".
 ```{r}
@@ -105,6 +109,7 @@ bad_guys <- superhero_info %>%
   filter(alignment=="bad")
 bad_guys
 ```
+</div>
 
 7. Among the good guys, Who are the Asgardians?
 ```{r}

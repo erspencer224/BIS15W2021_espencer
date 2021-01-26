@@ -1,6 +1,6 @@
 ---
 title: "dplyr Superhero"
-date: "2021-01-19"
+date: "2021-01-26"
 output:
   html_document: 
     theme: spacelab
@@ -14,7 +14,7 @@ getwd()
 ```
 
 ```
-## [1] "C:/Users/erspe/Desktop/BIS15W2021_espencer/lab5"
+## [1] "D:/TA files/Winter2021 BIS15L/students_rep/BIS15W2021_espencer/lab5"
 ```
 
 ## Breakout Rooms  
@@ -39,10 +39,10 @@ library("tidyverse")
 ```
 
 ```
-## v ggplot2 3.3.3     v purrr   0.3.4
-## v tibble  3.0.4     v dplyr   1.0.2
-## v tidyr   1.1.2     v stringr 1.4.0
-## v readr   1.4.0     v forcats 0.5.0
+## √ ggplot2 3.3.3     √ purrr   0.3.4
+## √ tibble  3.0.5     √ dplyr   1.0.3
+## √ tidyr   1.1.2     √ stringr 1.4.0
+## √ readr   1.4.0     √ forcats 0.5.0
 ```
 
 ```
@@ -306,6 +306,10 @@ good_guys
 ## 10 Alex~ Male   <NA>      <NA>  <NA>           NA NBC - He~ <NA>       good     
 ## # ... with 486 more rows, and 1 more variable: weight <dbl>
 ```
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 6. For the good guys, use the `tabyl` function to summarize their "race".
 
@@ -331,6 +335,7 @@ bad_guys
 ## 10 Ange~ Female <NA>      <NA>  <NA>           NA Image Co~ <NA>       bad      
 ## # ... with 197 more rows, and 1 more variable: weight <dbl>
 ```
+</div>
 
 7. Among the good guys, Who are the Asgardians?
 
