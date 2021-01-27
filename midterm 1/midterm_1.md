@@ -364,18 +364,20 @@ summary(vertebrate)
 
 ```r
 vertebrate %>% 
-  filter(hunt_cat== "High" | hunt_cat=="Moderate") %>% 
+  group_by(hunt_cat) %>% 
+  filter(hunt_cat!= "None") %>% 
   summarize(average_diversity_bird=mean(diversity_bird_species, na.rm=T),
             average_diversity_mammals=mean(diversity_mammal_species, na.rm=T))
 ```
 
 ```
-## # A tibble: 1 x 2
-##   average_diversity_bird average_diversity_mammals
-##                    <dbl>                     <dbl>
-## 1                   1.64                      1.71
+## # A tibble: 2 x 3
+##   hunt_cat average_diversity_bird average_diversity_mammals
+##   <fct>                     <dbl>                     <dbl>
+## 1 High                       1.66                      1.74
+## 2 Moderate                   1.62                      1.68
 ```
-*The average diversity of mammals is slightly higher than the average diversity of birds for high and moderate hunting intensity transects.*
+*The average diversity of mammals is slightly higher than the average diversity of birds for both high and moderate hunting intensity transects.*
 
 **11. (4 points) One of the conclusions in the study is that the relative abundance of animals drops off the closer you get to a village. Let's try to reconstruct this (without the statistics). How does the relative abundance (RA) of apes, birds, elephants, monkeys, rodents, and ungulates compare between sites that are less than 5km from a village to sites that are greater than 20km from a village? The variable `Distance` measures the distance of the transect from the nearest village. Hint: try using the `across` operator.**  
 
