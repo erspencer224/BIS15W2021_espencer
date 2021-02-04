@@ -1,7 +1,7 @@
 ---
 title: "Lab 7 Homework"
 author: "Emily Spencer"
-date: "2021-01-30"
+date: "2021-02-03"
 output:
   html_document: 
     theme: spacelab
@@ -374,6 +374,10 @@ amphibio %>%
 ## 1  6053  1104  2810  4347
 ```
 *I don't think the author intended us to think of the NAs as missing data, but instead as an indication that a species is not for example, an arboreal species. If a species is a fossorial species then for Ter, Aqu, and Arb the data will show NA because the species isn't defined as those things.* 
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
 
 **10. Now that we know how NA's are represented in the `amniota` data, how would you load the data such that the values which represent NA's are automatically converted?**
 
@@ -421,6 +425,7 @@ amniota_2 %>%
 ## #   female_body_mass_at_maturity_g <int>, no_sex_svl_cm <int>,
 ## #   no_sex_maturity_d <int>
 ```
+</div>
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.  
