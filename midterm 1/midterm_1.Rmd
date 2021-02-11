@@ -170,3 +170,5 @@ vertebrate %>%
   arrange(desc(veg_rich))
 ```
 *In addition, I wanted to see if instead the transect with the richest vegetation had the highest richness of bird species. But this also isn't the case.* 
+
+_Fantastic job Emily! Your midterm is better than my key!_
