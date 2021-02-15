@@ -1,7 +1,7 @@
 ---
 title: "Lab 10 Homework"
 author: "Emily Spencer"
-date: "2021-02-10"
+date: "2021-02-15"
 output:
   html_document: 
     theme: spacelab
@@ -122,6 +122,12 @@ deserts
 ## #   taxa <chr>, plot_type <chr>
 ```
 *This data is not tidy.* 
+
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class = "blue">
+
 2. How many genera and species are represented in the data? What are the total number of observations? Which species is most/ least frequently sampled in the study?
 
 ```r
@@ -185,6 +191,7 @@ deserts %>%
 ## 1 viridis     1
 ```
 *Species merriami is sampled the most and species viridis is sampled the least.*
+</div>
 
 3. What is the proportion of taxa included in this study? Show a table and plot that reflects this count.
 

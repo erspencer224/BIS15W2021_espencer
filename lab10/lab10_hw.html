@@ -11,7 +11,7 @@
 
 <meta name="author" content="Emily Spencer" />
 
-<meta name="date" content="2021-02-10" />
+<meta name="date" content="2021-02-15" />
 
 <title>Lab 10 Homework</title>
 
@@ -191,7 +191,7 @@ summary {
 
 <h1 class="title toc-ignore">Lab 10 Homework</h1>
 <h4 class="author">Emily Spencer</h4>
-<h4 class="date">2021-02-10</h4>
+<h4 class="date">2021-02-15</h4>
 
 </div>
 
@@ -277,7 +277,14 @@ library(naniar)</code></pre>
 ## 10        10     7    16  1977       6 PF         F                  20     NA
 ## # ... with 34,776 more rows, and 4 more variables: genus &lt;chr&gt;, species &lt;chr&gt;,
 ## #   taxa &lt;chr&gt;, plot_type &lt;chr&gt;</code></pre>
-<p><em>This data is not tidy.</em> 2. How many genera and species are represented in the data? What are the total number of observations? Which species is most/ least frequently sampled in the study?</p>
+<p><em>This data is not tidy.</em></p>
+<style>
+div.blue { background-color:#e6f0ff; border-radius: 5px; padding: 20px;}
+</style>
+<div class="blue">
+<ol start="2" style="list-style-type: decimal">
+<li>How many genera and species are represented in the data? What are the total number of observations? Which species is most/ least frequently sampled in the study?</li>
+</ol>
 <pre class="r"><code>deserts %&gt;% 
   count(genus, species, sort=T) </code></pre>
 <pre><code>## # A tibble: 48 x 3
@@ -316,6 +323,7 @@ library(naniar)</code></pre>
 ##   &lt;chr&gt;   &lt;int&gt;
 ## 1 viridis     1</code></pre>
 <p><em>Species merriami is sampled the most and species viridis is sampled the least.</em></p>
+</div>
 <ol start="3" style="list-style-type: decimal">
 <li>What is the proportion of taxa included in this study? Show a table and plot that reflects this count.</li>
 </ol>
