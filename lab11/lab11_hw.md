@@ -315,26 +315,26 @@ gapminder %>%
 ```r
 gapminder %>% 
   select(year, pop, country) %>% 
-  filter(between(year,1952,2007)) %>% 
+  filter(year==1952|year==2007) %>% 
   group_by(country) %>% 
-  summarise(total_pop_growth=sum(pop)) %>% 
+  summarise(total_pop_growth=diff(pop)) %>% 
   arrange(desc(total_pop_growth))
 ```
 
 ```
 ## # A tibble: 142 x 2
 ##    country       total_pop_growth
-##    <fct>                    <dbl>
-##  1 China              11497920623
-##  2 India               8413568878
-##  3 United States       2738534790
-##  4 Indonesia           1779874000
-##  5 Brazil              1467745520
-##  6 Japan               1341105696
-##  7 Pakistan            1124200629
-##  8 Bangladesh          1089064744
-##  9 Germany              930564520
-## 10 Nigeria              884496214
+##    <fct>                    <int>
+##  1 China                762419569
+##  2 India                738396331
+##  3 United States        143586947
+##  4 Indonesia            141495000
+##  5 Brazil               133408087
+##  6 Pakistan             127924057
+##  7 Bangladesh           103561480
+##  8 Nigeria              101912068
+##  9 Mexico                78556574
+## 10 Philippines           68638596
 ## # ... with 132 more rows
 ```
 
@@ -343,10 +343,10 @@ gapminder %>%
 
 ```r
 gapminder %>% 
-  filter(between(year,1952,2007)) %>% 
+  filter(year==1952|year==2007) %>% 
   group_by(country) %>% 
-  summarise(total_pop_growth=sum(pop)) %>% 
-   arrange(desc(total_pop_growth)) %>% 
+  summarise(total_pop_growth=diff(pop)) %>% 
+  arrange(desc(total_pop_growth)) %>% 
   head(n=5) %>% 
   ggplot(aes(x=country, y=total_pop_growth, fill=country)) + geom_col() +
   theme_linedraw() +
@@ -381,10 +381,10 @@ gapminder %>%
 
 ```r
 gapminder %>% 
-   filter(between(year,1952,2007)) %>% 
+  filter(year==1952|year==2007) %>% 
   filter(country=="Brazil"|country=="China"|country== "India"|country== "Indonesia"|country== "United States") %>% 
   group_by(country) %>% 
-  summarise(total_gdpPercap=sum(gdpPercap)) %>% 
+  summarise(total_gdpPercap=diff(gdpPercap)) %>%  
   ggplot(aes(x=country, y=total_gdpPercap, fill=country))+geom_col()+ theme_linedraw() +
   theme(plot.title=element_text(hjust=0.5), axis.text.x = element_text(angle = 60, hjust=1), legend.position="none")+
   labs(title="Per-Capita GDP Growth Since 1952",

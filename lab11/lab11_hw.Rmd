@@ -155,9 +155,9 @@ gapminder %>%
 ```{r}
 gapminder %>% 
   select(year, pop, country) %>% 
-  filter(between(year,1952,2007)) %>% 
+  filter(year==1952|year==2007) %>% 
   group_by(country) %>% 
-  summarise(total_pop_growth=sum(pop)) %>% 
+  summarise(total_pop_growth=diff(pop)) %>% 
   arrange(desc(total_pop_growth))
 ```
 
@@ -165,10 +165,10 @@ gapminder %>%
 **8. Use your results from the question above to plot population growth for the top five countries since 1952.**
 ```{r}
 gapminder %>% 
-  filter(between(year,1952,2007)) %>% 
+  filter(year==1952|year==2007) %>% 
   group_by(country) %>% 
-  summarise(total_pop_growth=sum(pop)) %>% 
-   arrange(desc(total_pop_growth)) %>% 
+  summarise(total_pop_growth=diff(pop)) %>% 
+  arrange(desc(total_pop_growth)) %>% 
   head(n=5) %>% 
   ggplot(aes(x=country, y=total_pop_growth, fill=country)) + geom_col() +
   theme_linedraw() +
@@ -188,10 +188,10 @@ gapminder %>%
 ```
 ```{r}
 gapminder %>% 
-   filter(between(year,1952,2007)) %>% 
+  filter(year==1952|year==2007) %>% 
   filter(country=="Brazil"|country=="China"|country== "India"|country== "Indonesia"|country== "United States") %>% 
   group_by(country) %>% 
-  summarise(total_gdpPercap=sum(gdpPercap)) %>% 
+  summarise(total_gdpPercap=diff(gdpPercap)) %>%  
   ggplot(aes(x=country, y=total_gdpPercap, fill=country))+geom_col()+ theme_linedraw() +
   theme(plot.title=element_text(hjust=0.5), axis.text.x = element_text(angle = 60, hjust=1), legend.position="none")+
   labs(title="Per-Capita GDP Growth Since 1952",
