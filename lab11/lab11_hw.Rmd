@@ -154,24 +154,22 @@ gapminder %>%
 **7. Which countries have had the largest population growth since 1952?**
 ```{r}
 gapminder %>% 
-  select(year, pop, country) %>% 
-  filter(year==1952|year==2007) %>% 
-  group_by(country) %>% 
-  summarise(total_pop_growth=diff(pop)) %>% 
-  arrange(desc(total_pop_growth))
+  select(country, year, pop) %>% 
+  filter(year==1952 | year==2007) %>% 
+  pivot_wider(names_from = year,
+              names_prefix = "yr_",
+              values_from = pop) %>% 
+  mutate(delta= yr_2007-yr_1952) %>% 
+  arrange(desc(delta))
 ```
-
 
 **8. Use your results from the question above to plot population growth for the top five countries since 1952.**
 ```{r}
 gapminder %>% 
-  filter(year==1952|year==2007) %>% 
-  group_by(country) %>% 
-  summarise(total_pop_growth=diff(pop)) %>% 
-  arrange(desc(total_pop_growth)) %>% 
-  head(n=5) %>% 
-  ggplot(aes(x=country, y=total_pop_growth, fill=country)) + geom_col() +
-  theme_linedraw() +
+  filter(country=="China" | country=="India" | country=="United States" | country=="Indonesia" | country=="Brazil") %>% 
+  select(country, year, pop) %>% 
+  ggplot(aes(x=year, y=pop, color=country))+
+  geom_line()+
   theme(plot.title=element_text(hjust=0.5), axis.text.x = element_text(angle = 60, hjust=1), legend.position="none")+
   labs(title="Population Growth Since 1952",
        x="Country",
@@ -181,18 +179,10 @@ gapminder %>%
 **9. How does per-capita GDP growth compare between these same five countries?**
 ```{r}
 gapminder %>% 
-  filter(between(year,1952,2007)) %>% 
-  filter(country=="Brazil"|country=="China"|country== "India"|country== "Indonesia"|country== "United States") %>% 
-  group_by(country) %>% 
-  summarise(total_gdpPercap=sum(gdpPercap))
-```
-```{r}
-gapminder %>% 
-  filter(year==1952|year==2007) %>% 
-  filter(country=="Brazil"|country=="China"|country== "India"|country== "Indonesia"|country== "United States") %>% 
-  group_by(country) %>% 
-  summarise(total_gdpPercap=diff(gdpPercap)) %>%  
-  ggplot(aes(x=country, y=total_gdpPercap, fill=country))+geom_col()+ theme_linedraw() +
+  filter(country=="China" | country=="India" | country=="United States" | country=="Indonesia" | country=="Brazil") %>% 
+  select(year, country, gdpPercap) %>% 
+  ggplot(aes(x=year, y=gdpPercap, group=country, color=country))+
+  geom_line()+
   theme(plot.title=element_text(hjust=0.5), axis.text.x = element_text(angle = 60, hjust=1), legend.position="none")+
   labs(title="Per-Capita GDP Growth Since 1952",
        x="Country",

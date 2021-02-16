@@ -1,7 +1,7 @@
 ---
 title: "Lab 11 Homework"
 author: "Emily Spencer"
-date: "2021-02-15"
+date: "2021-02-16"
 output:
   html_document: 
     theme: spacelab
@@ -314,42 +314,40 @@ gapminder %>%
 
 ```r
 gapminder %>% 
-  select(year, pop, country) %>% 
-  filter(year==1952|year==2007) %>% 
-  group_by(country) %>% 
-  summarise(total_pop_growth=diff(pop)) %>% 
-  arrange(desc(total_pop_growth))
+  select(country, year, pop) %>% 
+  filter(year==1952 | year==2007) %>% 
+  pivot_wider(names_from = year,
+              names_prefix = "yr_",
+              values_from = pop) %>% 
+  mutate(delta= yr_2007-yr_1952) %>% 
+  arrange(desc(delta))
 ```
 
 ```
-## # A tibble: 142 x 2
-##    country       total_pop_growth
-##    <fct>                    <int>
-##  1 China                762419569
-##  2 India                738396331
-##  3 United States        143586947
-##  4 Indonesia            141495000
-##  5 Brazil               133408087
-##  6 Pakistan             127924057
-##  7 Bangladesh           103561480
-##  8 Nigeria              101912068
-##  9 Mexico                78556574
-## 10 Philippines           68638596
+## # A tibble: 142 x 4
+##    country         yr_1952    yr_2007     delta
+##    <fct>             <int>      <int>     <int>
+##  1 China         556263527 1318683096 762419569
+##  2 India         372000000 1110396331 738396331
+##  3 United States 157553000  301139947 143586947
+##  4 Indonesia      82052000  223547000 141495000
+##  5 Brazil         56602560  190010647 133408087
+##  6 Pakistan       41346560  169270617 127924057
+##  7 Bangladesh     46886859  150448339 103561480
+##  8 Nigeria        33119096  135031164 101912068
+##  9 Mexico         30144317  108700891  78556574
+## 10 Philippines    22438691   91077287  68638596
 ## # ... with 132 more rows
 ```
-
 
 **8. Use your results from the question above to plot population growth for the top five countries since 1952.**
 
 ```r
 gapminder %>% 
-  filter(year==1952|year==2007) %>% 
-  group_by(country) %>% 
-  summarise(total_pop_growth=diff(pop)) %>% 
-  arrange(desc(total_pop_growth)) %>% 
-  head(n=5) %>% 
-  ggplot(aes(x=country, y=total_pop_growth, fill=country)) + geom_col() +
-  theme_linedraw() +
+  filter(country=="China" | country=="India" | country=="United States" | country=="Indonesia" | country=="Brazil") %>% 
+  select(country, year, pop) %>% 
+  ggplot(aes(x=year, y=pop, color=country))+
+  geom_line()+
   theme(plot.title=element_text(hjust=0.5), axis.text.x = element_text(angle = 60, hjust=1), legend.position="none")+
   labs(title="Population Growth Since 1952",
        x="Country",
@@ -362,37 +360,17 @@ gapminder %>%
 
 ```r
 gapminder %>% 
-  filter(between(year,1952,2007)) %>% 
-  filter(country=="Brazil"|country=="China"|country== "India"|country== "Indonesia"|country== "United States") %>% 
-  group_by(country) %>% 
-  summarise(total_gdpPercap=sum(gdpPercap))
-```
-
-```
-## # A tibble: 5 x 2
-##   country       total_gdpPercap
-## * <fct>                   <dbl>
-## 1 Brazil                 69952.
-## 2 China                  17860.
-## 3 India                  12688.
-## 4 Indonesia              20896.
-## 5 United States         315134.
-```
-
-```r
-gapminder %>% 
-  filter(year==1952|year==2007) %>% 
-  filter(country=="Brazil"|country=="China"|country== "India"|country== "Indonesia"|country== "United States") %>% 
-  group_by(country) %>% 
-  summarise(total_gdpPercap=diff(gdpPercap)) %>%  
-  ggplot(aes(x=country, y=total_gdpPercap, fill=country))+geom_col()+ theme_linedraw() +
+  filter(country=="China" | country=="India" | country=="United States" | country=="Indonesia" | country=="Brazil") %>% 
+  select(year, country, gdpPercap) %>% 
+  ggplot(aes(x=year, y=gdpPercap, group=country, color=country))+
+  geom_line()+
   theme(plot.title=element_text(hjust=0.5), axis.text.x = element_text(angle = 60, hjust=1), legend.position="none")+
   labs(title="Per-Capita GDP Growth Since 1952",
        x="Country",
        y="Per-Capita GDP Growth")
 ```
 
-![](lab11_hw_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+![](lab11_hw_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
 
 **10. Make one plot of your choice that uses faceting!**
 
@@ -406,7 +384,7 @@ gapminder %>%
        y="Density")
 ```
 
-![](lab11_hw_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
+![](lab11_hw_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences. 
