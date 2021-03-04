@@ -128,9 +128,10 @@ iplotScanone(lod_score)
 ```{r}
 summary(lod_score, threshold=1)
 
-iplotLOD <- iplotScanone(lod_score, chr=c(1,2,4,5,6,15))
+iplotLOD <- iplotScanone(lod_score, hyper, chr=c(1,2,4,5,6,15))
 iplotLOD
 ```
+*The gene with the highest LOD score can tell us that those who are homozygous for that geno have higher blood pressure than those that are heterozygous.* 
 
 **10. Please save your interactive chart from Q9 as a html file `hyper_iplotScanone.html` and make sure your upload it to your github repository with your lab14 homework as well.**
 ```{r}
